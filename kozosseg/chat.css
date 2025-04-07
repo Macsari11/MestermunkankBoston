@@ -1,0 +1,99 @@
+/* Chat Section */
+.chat-section {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 255, 153, 0.5);
+}
+
+/* Room List */
+.room-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.room-card {
+    background: rgba(0, 105, 62, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    min-width: 200px;
+}
+
+.room-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #00cc5c;
+}
+
+.room-card small {
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+/* Chat Container */
+.chat-container {
+    margin-top: 20px;
+}
+
+.messages {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+    background: rgba(0, 105, 62, 0.3);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.message {
+    padding: 10px;
+    border-bottom: 1px solid #00cc5c;
+}
+
+.username {
+    font-weight: bold;
+    color: #00cc5c;
+}
+
+.message-content {
+    color: #e6e6e6;
+}
+
+.timestamp {
+    font-size: 0.8rem;
+    color: #ccc;
+}
+
+/* Form Styles */
+form textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid #00cc5c;
+    color: #fff;
+    border-radius: 5px;
+    resize: vertical;
+}
+
+.hero-button {
+    background: linear-gradient(45deg, #00cc5c, #00693e);
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hero-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #00cc5c;
+}

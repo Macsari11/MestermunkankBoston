@@ -1,0 +1,8 @@
+{
+    "name": "leven/login_register",
+    "description": "Bejelentkezési és regisztrációs rendszer jelszó-visszaállítással.",
+    "type": "project",
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    }
+}

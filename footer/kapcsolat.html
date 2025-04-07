@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kapcsolat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        h1 {
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 10px;
+        }
+        h2 {
+            margin-top: 20px;
+        }
+        p, li {
+            margin-bottom: 10px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            max-width: 400px;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #34495e;
+        }
+    </style>
+</head>
+<body>
+    <h1>Kapcsolat</h1>
+    <p>Örömmel várjuk megkeresését! Ha kérdése van, vagy kapcsolatba szeretne lépni velünk, használja az alábbi elérhetőségeket vagy töltse ki az űrlapot.</p>
+
+    <h2>Elérhetőségeink</h2>
+    <ul>
+        <li><strong>Cégnév/Személy:</strong> [Cégnév vagy Személy neve]</li>
+        <li><strong>Cím:</strong> [Cím]</li>
+        <li><strong>E-mail:</strong> <a href="mailto:[E-mail cím]">[E-mail cím]</a></li>
+        <li><strong>Telefon:</strong> [Telefonszám, ha van]</li>
+    </ul>
+
+    <h2>Küldjön üzenetet</h2>
+    <form action="[Üzenetküldő URL]" method="POST">
+        <label for="name">Név:</label>
+        <input type="text" id="name" name="name" placeholder="Az Ön neve" required>
+
+        <label for="email">E-mail cím:</label>
+        <input type="email" id="email" name="email" placeholder="Az Ön e-mail címe" required>
+
+        <label for="message">Üzenet:</label>
+        <textarea id="message" name="message" rows="5" placeholder="Írja ide üzenetét" required></textarea>
+
+        <button type="submit">Üzenet küldése</button>
+    </form>
+
+    <h2>További információ</h2>
+    <p>További részletekért tekintse meg az <a href="adatvedelem.html">Adatvédelmi Nyilatkozatunkat</a> vagy a <a href="felhasznalasi_feltetelek.html">Felhasználási Feltételeinket</a>.</p>
+</body>
+</html>

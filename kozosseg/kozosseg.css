@@ -1,0 +1,354 @@
+/* Alapvető beállítások a Közösség oldalhoz */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #000;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* Fejléc és navigáció (ha szükséges, de feltételezem, ezt a style.css kezeli) */
+.hero-header {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://wallpaperaccess.com/full/416597.jpg');
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 5px 20px rgba(0, 255, 153, 0.5);
+    border-bottom: 1px solid #00cc5c;
+    overflow: hidden;
+}
+
+.hero-content {
+    text-align: center;
+    padding: 50px;
+    position: relative;
+}
+
+.hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 6rem;
+    text-transform: uppercase;
+    color: #00cc5c;
+    text-shadow: 0 0 30px rgba(0, 255, 153, 0.8);
+    animation: fadeIn 1s ease-out;
+}
+
+.hero-subtitle {
+    font-size: 1.8rem;
+    margin: 20px 0;
+    color: #fff;
+    text-shadow: 0 0 15px #00cc5c;
+    animation: fadeIn 1.5s ease-out;
+}
+
+.hero-button {
+    padding: 15px 40px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    background: #00cc5c;
+    border: none;
+    border-radius: 50px;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 0 20px #00cc5c;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.hero-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px #00cc5c, 0 0 50px #00cc5c;
+}
+
+/* Közösség szekció */
+.explore-section {
+    max-width: 1200px;
+    margin: 50px auto;
+    text-align: center;
+    padding: 40px;
+    background: linear-gradient(to bottom, rgba(0, 105, 62, 0.2), rgba(0, 0, 0, 0.8));
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 204, 92, 0.5);
+}
+
+.section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    color: #00cc5c;
+    text-shadow: 0 0 10px #00cc5c;
+    margin-bottom: 40px;
+}
+
+.explore-content {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.explore-item {
+    background: rgba(0, 105, 62, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    transition: transform 0.3s ease;
+}
+
+.explore-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 15px #00cc5c;
+}
+
+.explore-item h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: #fff;
+    text-shadow: 0 0 5px #00cc5c;
+    margin-bottom: 15px;
+}
+
+.explore-item p {
+    font-size: 1.2rem;
+    color: #e6e6e6;
+}
+
+/* Futurisztikus lábléc */
+.futuristic-footer {
+    background: linear-gradient(135deg, #00693e, #000);
+    padding: 20px 30px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 -5px 20px rgba(0, 255, 153, 0.5);
+    border-top: 1px solid #00cc5c;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 10px;
+}
+
+.footer-logo-img {
+    width: 150px;
+    filter: drop-shadow(0 0 5px #00cc5c);
+    transition: transform 0.5s ease;
+}
+
+.footer-logo-img:hover {
+    transform: scale(1.1) rotate(10deg);
+}
+
+.footer-links {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    text-transform: uppercase;
+    padding: 5px;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 5px rgba(0, 255, 153, 0.7);
+}
+
+.footer-links a:hover {
+    color: #00cc5c;
+    text-shadow: 0 0 10px #00cc5c;
+    transform: translateY(-2px);
+}
+
+.social-media {
+    display: flex;
+    gap: 10px;
+}
+
+.social-icon {
+    width: 30px;
+    filter: drop-shadow(0 0 5px #00cc5c);
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 10px #00cc5c);
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: #ccc;
+    text-shadow: 0 0 5px rgba(0, 255, 153, 0.3);
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+/* Animációk */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes pulse {
+    0% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.1); }
+    100% { opacity: 0.3; transform: scale(1); }
+}
+
+/* Reszponzivitás */
+
+/* Tablet nézet (1024px és kisebb) */
+@media (max-width: 1024px) {
+    .hero-title {
+        font-size: 4rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.3rem;
+    }
+
+    .hero-button {
+        padding: 12px 35px;
+        font-size: 1.5rem;
+    }
+
+    .explore-section {
+        max-width: 90%;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+    }
+
+    .explore-item {
+        width: 250px;
+    }
+}
+
+/* Mobil nézet (768px és kisebb) */
+@media (max-width: 768px) {
+    .hero-header {
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .hero-content {
+        padding: 30px;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        margin: 15px 0;
+    }
+
+    .hero-button {
+        padding: 10px 30px;
+        font-size: 1.3rem;
+    }
+
+    .explore-section {
+        margin: 30px auto;
+        padding: 15px;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .explore-item {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .futuristic-footer {
+        padding: 15px 20px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .footer-logo-img {
+        width: 120px;
+    }
+}
+
+/* Kisebb mobil nézet (480px és kisebb) */
+@media (max-width: 480px) {
+    .hero-content {
+        padding: 20px;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.9rem;
+        margin: 10px 0;
+    }
+
+    .hero-button {
+        padding: 8px 25px;
+        font-size: 1.1rem;
+    }
+
+    .explore-section {
+        margin: 20px auto;
+        padding: 10px;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .explore-item h3 {
+        font-size: 1.5rem;
+    }
+
+    .explore-item p {
+        font-size: 1rem;
+    }
+
+    .footer-logo-img {
+        width: 100px;
+    }
+
+    .footer-links a {
+        font-size: 0.9rem;
+    }
+
+    .social-icon {
+        width: 25px;
+    }
+
+    .footer-bottom {
+        font-size: 0.7rem;
+    }
+}

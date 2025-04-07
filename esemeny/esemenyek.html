@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boston Celtics - Események</title>
+    <link rel="stylesheet" href="esemeny.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="hero-header">
+        <nav class="nav-container">
+            <div class="nav-links">
+                <a href="esemenyek.html">Események</a>
+                <a href="../jatekosok.html">Játékosok</a>
+                <a href="../kozosseg/kozosseg.html">Közösség</a>
+            </div>
+            <div class="logo-container">
+                <a href="../index.html">
+                    <img src="../Pics/logo-removebg-preview.png" alt="Boston Celtics Logo" class="logo">
+                </a>
+            </div>
+            <div class="auth-links">
+                <a href="admin_user/index.html" class="login">Bejelentkezés</a>
+                <a href="admin_user/index.html" class="register">Regisztráció</a>
+            </div>
+        </nav>
+        <div class="hero-content">
+            <h1 class="hero-title">Celtics Események</h1>
+            <p class="hero-subtitle">Nézd meg a közelgő mérkőzéseket!</p>
+            <button class="hero-button">Fedezd fel a naptárat!</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="calendar-section">
+            <h2 class="section-title">Mérkőzés Naptár</h2>
+            <div id="calendar-container">
+                <div class="calendar-header">
+                    <button id="prevMonth">❮</button>
+                    <span id="currentMonthYear"></span>
+                    <button id="nextMonth">❯</button>
+                </div>
+                <table id="calendar">
+                    <thead>
+                        <tr>
+                            <th>H</th><th>K</th><th>Sz</th><th>Cs</th><th>P</th><th>Sz</th><th>V</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer class="modern-footer">
+        <p>© 2025 Boston Celtics Fan Page</p>
+        <div class="social-media">
+            <a href="https://facebook.com/bostonceltics" target="_blank"><img src="kepek/facebook.png" alt="Facebook" class="social-icon"></a>
+            <a href="https://twitter.com/celtics" target="_blank"><img src="kepek/twitter.png" alt="Twitter" class="social-icon"></a>
+            <a href="https://instagram.com/bostonceltics" target="_blank"><img src="kepek/instagram.png" alt="Instagram" class="social-icon"></a>
+        </div>
+    </footer>
+
+    <script src="esemeny.js"></script>
+</body>
+</html>
