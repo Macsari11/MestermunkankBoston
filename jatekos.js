@@ -7,15 +7,12 @@ document.addEventListener("DOMContentLoaded", function () {
     let isStartingFive = true;
     let isExploreVisible = false;
 
-    // PHP-ból érkező adatok ellenőrzése
     console.log("Kezdőötös:", startingFive);
     console.log("Cserék:", benchPlayers);
 
-    // Kép elérési út konfigurálása
-    const imageBasePath = "./"; // Relatív út a jatekosok.php mappájához képest
-    const fallbackImage = "../kepek/logo.png"; // Tartalék kép
+    const imageBasePath = "./"; 
+    const fallbackImage = "../kepek/logo.png";
 
-    // Játékosokhoz tartozó fájlkiterjesztések
     const extensionMap = {
         "Jayson Tatum": "jpg",
         "Jaylen Brown": "webp",
@@ -32,7 +29,6 @@ document.addEventListener("DOMContentLoaded", function () {
         "Xavier Tillman": "jpg"
     };
 
-    // Kártya létrehozása
     function createCard(player, cardId, isBench = false) {
         const card = document.getElementById(cardId);
         if (!card) {
@@ -47,7 +43,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const ribbonClass = isBench ? "bench" : "starting";
         const ribbonText = isBench ? "CSERE" : "KEZDŐÖTÖS";
 
-        // Kép elérési útjának módosítása
         let imagePath = player.img || "";
         const playerName = player.name;
         if (extensionMap[playerName]) {
@@ -57,7 +52,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const fullImagePath = `${imageBasePath}${imagePath}`;
         console.log("Kép elérési útja:", fullImagePath);
 
-        // Biztosítjuk, hogy a player objektum minden szükséges mezőt tartalmazzon
         const safePlayer = {
             name: player.name || "Ismeretlen",
             age: player.age || "N/A",
@@ -67,7 +61,6 @@ document.addEventListener("DOMContentLoaded", function () {
             img: fullImagePath
         };
 
-        // JSON stringet Base64 kódolással tároljuk
         const playerData = btoa(JSON.stringify(safePlayer));
 
         card.innerHTML = `
@@ -88,7 +81,6 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
         `;
 
-        // Eseményfigyelő csatolása
         const moreInfoBtn = card.querySelector(".more-info-btn");
         if (moreInfoBtn) {
             moreInfoBtn.removeEventListener("click", showCardPopup);
@@ -99,7 +91,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Felugró ablak megjelenítése
     function showCardPopup(event) {
         console.log("Tudj meg többet gombra kattintva");
 
@@ -172,7 +163,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Kártyák animált váltása
     function animateSwitch(players, isBench) {
         const cards = document.querySelectorAll(".card");
         cards.forEach((card, index) => {
@@ -193,7 +183,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // "Fedezd fel" gomb működése
     exploreButton.addEventListener("click", function () {
         if (!isExploreVisible) {
             exploreSection.style.display = "block";
@@ -211,7 +200,6 @@ document.addEventListener("DOMContentLoaded", function () {
         isExploreVisible = !isExploreVisible;
     });
 
-    // Kezdőötös betöltése
     console.log("Kezdőötös betöltése indul...");
     const cards = document.querySelectorAll(".card");
     cards.forEach((card, index) => {
@@ -223,7 +211,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Kezdőötös és cserék váltása
     toggleButton.addEventListener("click", function () {
         const cards = document.querySelectorAll(".card");
         cards.forEach(card => card.style.display = "block");

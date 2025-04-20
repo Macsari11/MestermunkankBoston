@@ -1,4 +1,3 @@
-/* Alapvető beállítások a Közösség oldalhoz */
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
@@ -8,7 +7,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Fejléc és navigáció (ha szükséges, de feltételezem, ezt a style.css kezeli) */
 .hero-header {
     position: relative;
     height: 100vh;
@@ -66,7 +64,6 @@ body {
     box-shadow: 0 0 30px #00cc5c, 0 0 50px #00cc5c;
 }
 
-/* Közösség szekció */
 .explore-section {
     max-width: 1200px;
     margin: 50px auto;
@@ -118,7 +115,6 @@ body {
     color: #e6e6e6;
 }
 
-/* Futurisztikus lábléc */
 .futuristic-footer {
     background: linear-gradient(135deg, #00693e, #000);
     padding: 20px 30px;
@@ -198,7 +194,6 @@ body {
     margin: 0;
 }
 
-/* Animációk */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -210,9 +205,7 @@ body {
     100% { opacity: 0.3; transform: scale(1); }
 }
 
-/* Reszponzivitás */
 
-/* Tablet nézet (1024px és kisebb) */
 @media (max-width: 1024px) {
     .hero-title {
         font-size: 4rem;
@@ -240,7 +233,6 @@ body {
     }
 }
 
-/* Mobil nézet (768px és kisebb) */
 @media (max-width: 768px) {
     .hero-header {
         height: auto;
@@ -299,7 +291,6 @@ body {
     }
 }
 
-/* Kisebb mobil nézet (480px és kisebb) */
 @media (max-width: 480px) {
     .hero-content {
         padding: 20px;

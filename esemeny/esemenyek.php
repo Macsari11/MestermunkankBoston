@@ -2,14 +2,12 @@
 session_start();
 $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true;
 
-// Hibakereső üzenet (éles környezetben törölhető)
 if (!$isLoggedIn) {
     error_log("Nem vagyok bejelentkezve: " . print_r($_SESSION, true));
 } else {
     error_log("Bejelentkezve, felhasználónév: " . $_SESSION['username']);
 }
 
-// Kijelentkezés kezelése
 if (isset($_POST['logout'])) {
     session_destroy();
     header("Location: ../index.php");

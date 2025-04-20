@@ -1,8 +1,7 @@
 <?php
-// Adatbázis kapcsolat
 $servername = "127.0.0.1";
-$username = "root"; // Cseréld ki, ha szükséges
-$password = "";     // Cseréld ki, ha szükséges
+$username = "root"; 
+$password = "";     
 $dbname = "user_db";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -11,7 +10,6 @@ if ($conn->connect_error) {
     die("Kapcsolódási hiba: " . $conn->connect_error);
 }
 
-// Kérdések lekérdezése
 $sql = "SELECT question, answers, correct_answer FROM quiz_questions";
 $result = $conn->query($sql);
 
@@ -26,7 +24,6 @@ if ($result->num_rows > 0) {
     }
 }
 
-// JSON formátumban visszaadjuk az adatokat
 header('Content-Type: application/json');
 echo json_encode($questions);
 

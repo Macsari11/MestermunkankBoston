@@ -2,43 +2,40 @@
 session_start();
 $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true;
 
-// Hibakereső üzenet (éles környezetben törölhető)
 if (!$isLoggedIn) {
     error_log("Nem vagyok bejelentkezve: " . print_r($_SESSION, true));
 } else {
     error_log("Bejelentkezve, felhasználónév: " . $_SESSION['username']);
 }
 
-// Kijelentkezés kezelése
 if (isset($_POST['logout'])) {
     session_destroy();
     header("Location: ../index.php");
     exit();
 }
 
-// Adatbázis kapcsolat
 $servername = "localhost";
-$username = "root"; // Ha másik gépen más, itt módosítsd
-$password = ""; // Ha másik gépen más, itt módosítsd
+$username = "root"; 
+$password = "";
 $dbname = "user_db";
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $conn->exec("SET NAMES utf8"); // Karakterkódolás beállítása
+    $conn->exec("SET NAMES utf8"); 
 
-    // Ellenőrizzük, hogy a players tábla létezik-e
+   
     $table_check = $conn->query("SHOW TABLES LIKE 'players'");
     if ($table_check->rowCount() == 0) {
         throw new PDOException("A 'players' tábla nem található az adatbázisban!");
     }
 
-    // Kezdőcsapat lekérdezése
+    
     $stmt_starting = $conn->prepare("SELECT * FROM players WHERE is_starting = 1 LIMIT 5");
     $stmt_starting->execute();
     $startingFive = $stmt_starting->fetchAll(PDO::FETCH_ASSOC);
 
-    // Cserék lekérdezése
+    
     $stmt_bench = $conn->prepare("SELECT * FROM players WHERE is_starting = 0");
     $stmt_bench->execute();
     $benchPlayers = $stmt_bench->fetchAll(PDO::FETCH_ASSOC);
@@ -166,7 +163,6 @@ try {
         </div>
     </footer>
 
-    <!-- PHP adatok átadása JavaScript-nek -->
     <script>
         const startingFive = <?php
             $json = json_encode($startingFive, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP);

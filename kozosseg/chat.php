@@ -2,9 +2,8 @@
 session_start();
 $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true;
 
-// Adatbázis kapcsolat PDO-val
 $servername = "localhost";
-$port = "3306"; // Alapértelmezett MySQL port, ha eltér, módosítsd
+$port = "3306";
 $username = "root";
 $password = "";
 $dbname = "user_db";
@@ -20,19 +19,16 @@ try {
     die("Adatbázis kapcsolat sikertelen: " . $e->getMessage());
 }
 
-// Ha nem bejelentkezett, átirányítás
 if (!$isLoggedIn) {
     header("Location: ../login_register/index2.php");
     exit();
 }
 
-// Felhasználó ID lekérése
 $user_stmt = $conn->prepare("SELECT id FROM users WHERE username = :username");
 $user_stmt->execute(['username' => $_SESSION['username']]);
 $user = $user_stmt->fetch();
 $user_id = $user['id'];
 
-// Új üzenet küldése
 if (isset($_POST['message']) && !empty($_POST['message']) && isset($_POST['room_id'])) {
     $room_id = $_POST['room_id'];
     $message = $_POST['message'];

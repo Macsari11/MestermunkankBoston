@@ -2,13 +2,11 @@
 session_start();
 $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true;
 
-// Ha admin, irányítsuk az admin felületre
 if ($isLoggedIn && $_SESSION['role'] === 'admin') {
     header("Location: admin/admin_dashboard.php");
     exit();
 }
 
-// Kijelentkezés kezelése
 if (isset($_POST['logout'])) {
     session_destroy();
     header("Location: index.php");

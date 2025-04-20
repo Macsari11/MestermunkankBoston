@@ -2,13 +2,11 @@
 session_start();
 $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true;
 
-// Ha nem bejelentkezett, átirányítás
 if (!$isLoggedIn) {
     header("Location: login_register/index2.php");
     exit();
 }
 
-// Adatbázis kapcsolat
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -21,12 +19,10 @@ try {
     die("Adatbázis kapcsolat sikertelen: " . $e->getMessage());
 }
 
-// Felhasználó adatainak lekérése
 $user_stmt = $conn->prepare("SELECT username, email, profile_pic FROM users WHERE username = :username");
 $user_stmt->execute(['username' => $_SESSION['username']]);
 $user = $user_stmt->fetch(PDO::FETCH_ASSOC);
 
-// Jelszóváltoztatás kezelése
 if (isset($_POST['change_password'])) {
     $current_password = $_POST['current_password'];
     $new_password = $_POST['new_password'];
@@ -50,10 +46,9 @@ if (isset($_POST['change_password'])) {
     }
 }
 
-// Profilkép feltöltése
 if (isset($_FILES['profile_pic']) && $_FILES['profile_pic']['error'] == 0) {
     $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
-    $max_size = 5 * 1024 * 1024; // 5MB
+    $max_size = 5 * 1024 * 1024; 
     $upload_dir = "profile_pics/";
     
     if (!file_exists($upload_dir)) {
@@ -70,7 +65,7 @@ if (isset($_FILES['profile_pic']) && $_FILES['profile_pic']['error'] == 0) {
         if (move_uploaded_file($file_tmp, $destination)) {
             $update_stmt = $conn->prepare("UPDATE users SET profile_pic = :profile_pic WHERE username = :username");
             $update_stmt->execute(['profile_pic' => $destination, 'username' => $_SESSION['username']]);
-            $user['profile_pic'] = $destination; // Frissítjük a változót
+            $user['profile_pic'] = $destination;
             $upload_message = "Profilkép sikeresen feltöltve!";
         } else {
             $upload_message = "Hiba a fájl feltöltésekor!";
@@ -80,7 +75,6 @@ if (isset($_FILES['profile_pic']) && $_FILES['profile_pic']['error'] == 0) {
     }
 }
 
-// Kijelentkezés kezelése
 if (isset($_POST['logout'])) {
     session_destroy();
     header("Location: index.php");
@@ -132,7 +126,6 @@ if (isset($_POST['logout'])) {
         <section class="profile-section">
             <h2 class="section-title">Profilod</h2>
             <div class="profile-container">
-                <!-- Profilkép megjelenítése és feltöltése -->
                 <div class="profile-pic">
                     <?php if ($user['profile_pic']): ?>
                         <img src="<?php echo htmlspecialchars($user['profile_pic']); ?>" alt="Profilkép" class="current-pic">
@@ -148,13 +141,11 @@ if (isset($_POST['logout'])) {
                     <?php endif; ?>
                 </div>
 
-                <!-- Felhasználói adatok -->
                 <div class="profile-info">
                     <p><strong>Felhasználónév:</strong> <?php echo htmlspecialchars($user['username']); ?></p>
                     <p><strong>Email:</strong> <?php echo htmlspecialchars($user['email']); ?></p>
                 </div>
 
-                <!-- Jelszóváltoztatás -->
                 <div class="password-change">
                     <h3>Jelszó megváltoztatása</h3>
                     <form method="POST">

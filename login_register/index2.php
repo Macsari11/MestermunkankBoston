@@ -4,13 +4,11 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// Adatbázis kapcsolat
 $conn = new mysqli("localhost", "root", "", "user_db");
 if ($conn->connect_error) {
     die("Kapcsolódási hiba: " . $conn->connect_error);
 }
 
-// Email ellenőrző függvény
 function isValidEmail($email) {
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         return false;
@@ -19,7 +17,6 @@ function isValidEmail($email) {
     return preg_match($pattern, $email) === 1;
 }
 
-// Regisztráció befejezése (kvíz után)
 if (isset($_POST['complete_registration'])) {
     $username = trim($_POST['username']);
     $email = trim($_POST['email']);
@@ -54,31 +51,25 @@ if (isset($_POST['complete_registration'])) {
     }
 }
 
-// Bejelentkezés kezelése
 if (isset($_POST['login'])) {
     $username = trim($_POST['username']);
     $password = $_POST['password'];
 
-    // Először ellenőrizzük, hogy létezik-e a felhasználó és helyes-e a jelszó
     $stmt = $conn->prepare("SELECT password, role, is_banned FROM users WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $stmt->bind_result($hashed_password, $role, $is_banned);
     
-    // Ha nem találjuk a felhasználót, vagy a jelszó hibás
     if (!$stmt->fetch() || !password_verify($password, $hashed_password)) {
         echo "<script>alert('Hibás felhasználónév vagy jelszó!'); showForm('login-form');</script>";
     } else {
-        // Ha a felhasználó létezik és a jelszó helyes, ellenőrizzük a kitiltási állapotot
         if ($is_banned == 1) {
             echo "<script>alert('Ez a felhasználó ki van tiltva!'); showForm('login-form');</script>";
         } else {
-            // Ha minden rendben, bejelentkeztetjük
             $_SESSION['logged_in'] = true;
             $_SESSION['username'] = $username;
             $_SESSION['role'] = $role;
 
-            // Admin ellenőrzés és átirányítás
             if ($role === 'admin') {
                 header("Location: ../admin/admin_dashboard.php");
             } else {
@@ -90,7 +81,6 @@ if (isset($_POST['login'])) {
     $stmt->close();
 }
 
-// Regisztráció indítása (kvízre irányít)
 if (isset($_POST['register'])) {
     $username = trim($_POST['username']);
     $email = trim($_POST['email']);

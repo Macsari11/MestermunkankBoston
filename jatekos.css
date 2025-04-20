@@ -8,7 +8,6 @@ body {
   perspective: 1000px;
 }
 
-/* Lenyíló menü stílusa */
 .dropdown {
   position: relative;
   display: inline-block;
@@ -63,7 +62,6 @@ body {
   display: block;
 }
 
-/* Fejléc és navigáció */
 .hero-header {
   position: relative;
   height: 100vh;
@@ -160,7 +158,6 @@ body {
   box-shadow: 0 0 25px #00cc5c;
 }
 
-/* "Fedezd fel" szekció */
 .explore-section {
   max-width: 1200px;
   margin: 0 auto;
@@ -213,7 +210,6 @@ body {
   text-shadow: 0 0 5px rgba(0, 255, 153, 0.5);
 }
 
-/* Játékosok szekció */
 .players-section {
   max-width: 1200px;
   margin: 50px auto;
@@ -361,7 +357,6 @@ body {
   opacity: 1;
 }
 
-/* Holografikus szalag */
 .holo-ribbon {
   position: absolute;
   top: 20px;
@@ -410,7 +405,6 @@ body {
   box-shadow: 0 0 25px #00cc5c;
 }
 
-/* Felugró ablak stílusok */
 .card-popup-overlay {
   position: fixed;
   top: 0;
@@ -500,7 +494,6 @@ body {
   text-shadow: 0 0 5px rgba(0, 255, 153, 0.5);
 }
 
-/* Futurisztikus lábléc */
 .futuristic-footer {
   background: linear-gradient(135deg, #00693e, #000);
   padding: 20px 30px;
@@ -580,7 +573,6 @@ body {
   margin: 0;
 }
 
-/* Animációk */
 @keyframes slideIn {
   from { transform: translateY(-50px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }

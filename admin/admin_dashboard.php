@@ -1,38 +1,31 @@
 <?php
 session_start();
 
-// Ellenőrizzük, hogy be van-e jelentkezve és admin-e
 if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true || $_SESSION['role'] !== 'admin') {
     header("Location: ../login_register/index2.php");
     exit();
 }
 
-// Adatbázis kapcsolat
 $conn = new mysqli("localhost", "root", "", "user_db");
 if ($conn->connect_error) {
     die("Kapcsolódási hiba: " . $conn->connect_error);
 }
 
-// Felhasználók lekérdezése
 $users_query = "SELECT id, username, email, role, is_banned FROM users";
 $users_result = $conn->query($users_query);
 
-// Üzenetek lekérdezése
 $messages_query = "SELECT m.id, m.room_id, m.user_id, m.message, m.created_at, u.username, r.name as room_name 
                  FROM messages m 
                  JOIN users u ON m.user_id = u.id 
                  JOIN rooms r ON m.room_id = r.id";
 $messages_result = $conn->query($messages_query);
 
-// Játékosok lekérdezése
 $players_query = "SELECT id, name, age, height, position, img, stats, is_starting FROM players";
 $players_result = $conn->query($players_query);
 
-// Szobák lekérdezése
 $rooms_query = "SELECT id, name, description FROM rooms";
 $rooms_result = $conn->query($rooms_query);
 
-// Új szoba létrehozása
 if (isset($_POST['add_room'])) {
     $room_name = trim($_POST['room_name']);
     $room_description = trim($_POST['room_description']);
@@ -52,7 +45,6 @@ if (isset($_POST['add_room'])) {
     }
 }
 
-// Felhasználó kitiltása/kitiltás feloldása
 if (isset($_POST['toggle_ban'])) {
     $user_id = $_POST['user_id'];
     $is_banned = $_POST['is_banned'] == 1 ? 0 : 1;
@@ -67,7 +59,6 @@ if (isset($_POST['toggle_ban'])) {
     }
 }
 
-// Üzenet törlése
 if (isset($_POST['delete_message'])) {
     $message_id = $_POST['message_id'];
     $stmt = $conn->prepare("DELETE FROM messages WHERE id = ?");
@@ -81,7 +72,6 @@ if (isset($_POST['delete_message'])) {
     }
 }
 
-// Játékos törlése
 if (isset($_POST['delete_player'])) {
     $player_id = $_POST['player_id'];
     $stmt = $conn->prepare("DELETE FROM players WHERE id = ?");
@@ -95,7 +85,6 @@ if (isset($_POST['delete_player'])) {
     }
 }
 
-// Játékos hozzáadása
 if (isset($_POST['add_player'])) {
     $name = trim($_POST['name']);
     $age = (int)$_POST['age'];
@@ -116,7 +105,6 @@ if (isset($_POST['add_player'])) {
     }
 }
 
-// Játékos szerkesztése
 if (isset($_POST['edit_player'])) {
     $player_id = $_POST['player_id'];
     $name = trim($_POST['name']);
@@ -163,7 +151,6 @@ if (isset($_POST['edit_player'])) {
     </header>
 
     <main class="admin-main">
-        <!-- Felhasználók kezelése -->
         <section class="admin-section" id="users">
             <h2>Felhasználók</h2>
             <table class="admin-table">
@@ -200,7 +187,6 @@ if (isset($_POST['edit_player'])) {
             </table>
         </section>
 
-        <!-- Üzenetek kezelése -->
         <section class="admin-section" id="messages">
             <h2>Üzenetek</h2>
             <table class="admin-table">
@@ -234,11 +220,9 @@ if (isset($_POST['edit_player'])) {
             </table>
         </section>
 
-        <!-- Játékosok kezelése -->
         <section class="admin-section" id="players">
             <h2>Játékosok</h2>
 
-            <!-- Új játékos hozzáadása űrlap -->
             <div class="admin-form">
                 <h3>Új játékos hozzáadása</h3>
                 <form method="POST">
@@ -255,7 +239,6 @@ if (isset($_POST['edit_player'])) {
                 </form>
             </div>
 
-            <!-- Játékosok listázása -->
             <table class="admin-table">
                 <thead>
                     <tr>
@@ -282,9 +265,7 @@ if (isset($_POST['edit_player'])) {
                             <td><?php echo htmlspecialchars($player['stats']); ?></td>
                             <td><?php echo $player['is_starting'] ? 'Igen' : 'Nem'; ?></td>
                             <td>
-                                <!-- Szerkesztés gomb -->
                                 <button class="action-btn edit" onclick="showEditForm(<?php echo $player['id']; ?>, '<?php echo htmlspecialchars($player['name']); ?>', <?php echo $player['age']; ?>, '<?php echo htmlspecialchars($player['height']); ?>', '<?php echo htmlspecialchars($player['position']); ?>', '<?php echo htmlspecialchars($player['img']); ?>', '<?php echo htmlspecialchars($player['stats']); ?>', <?php echo $player['is_starting']; ?>)">Szerkesztés</button>
-                                <!-- Törlés gomb -->
                                 <form method="POST" style="display:inline;">
                                     <input type="hidden" name="player_id" value="<?php echo $player['id']; ?>">
                                     <button type="submit" name="delete_player" class="action-btn delete">Törlés</button>
@@ -295,7 +276,6 @@ if (isset($_POST['edit_player'])) {
                 </tbody>
             </table>
 
-            <!-- Játékos szerkesztése űrlap (rejtett, JavaScript-tel jelenítjük meg) -->
             <div class="admin-form" id="edit-player-form" style="display:none;">
                 <h3>Játékos szerkesztése</h3>
                 <form method="POST">
@@ -315,11 +295,9 @@ if (isset($_POST['edit_player'])) {
             </div>
         </section>
 
-        <!-- Szobák kezelése -->
         <section class="admin-section" id="rooms">
             <h2>Szobák</h2>
 
-            <!-- Új szoba hozzáadása űrlap -->
             <div class="admin-form">
                 <h3>Új szoba létrehozása</h3>
                 <form method="POST">
@@ -329,7 +307,6 @@ if (isset($_POST['edit_player'])) {
                 </form>
             </div>
 
-            <!-- Szobák listázása -->
             <table class="admin-table">
                 <thead>
                     <tr>
@@ -370,14 +347,12 @@ if (isset($_POST['edit_player'])) {
     </script>
 
     <?php
-    // Kijelentkezés kezelése
     if (isset($_POST['logout'])) {
         session_destroy();
         header("Location: ../login_register/index2.php");
         exit();
     }
 
-    // Adatbázis kapcsolat lezárása
     $conn->close();
     ?>
 </body>

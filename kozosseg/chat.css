@@ -1,4 +1,3 @@
-/* Chat Section */
 .chat-section {
     max-width: 1200px;
     margin: 50px auto;
@@ -8,7 +7,6 @@
     box-shadow: 0 0 20px rgba(0, 255, 153, 0.5);
 }
 
-/* Room List */
 .room-list {
     display: flex;
     flex-wrap: wrap;
@@ -37,7 +35,6 @@
     color: #ccc;
 }
 
-/* Chat Container */
 .chat-container {
     margin-top: 20px;
 }
@@ -70,7 +67,6 @@
     color: #ccc;
 }
 
-/* Form Styles */
 form textarea {
     width: 100%;
     height: 100px;

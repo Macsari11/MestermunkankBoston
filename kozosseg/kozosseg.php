@@ -2,7 +2,6 @@
 session_start();
 $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true;
 
-// Kijelentkezés kezelése
 if (isset($_POST['logout'])) {
     session_destroy();
     header("Location: ../index.php");

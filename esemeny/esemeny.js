@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentYear = today.getFullYear();
     let currentMonth = today.getMonth();
 
-    // Celtics mérkőzések (példaadatok 2025-re)
     const games = [
         { date: new Date(2025, 2, 10), opponent: "Miami Heat", time: "19:30" }, // Március 10, 2025
         { date: new Date(2025, 2, 15), opponent: "Los Angeles Lakers", time: "20:00" }, // Március 15, 2025
@@ -42,7 +41,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 cell.classList.add("today");
             }
 
-            // Ellenőrizzük, hogy van-e mérkőzés az adott napon
             const gameDate = new Date(year, month, day);
             const game = games.find(g => g.date.toDateString() === gameDate.toDateString());
             if (game) {
@@ -99,6 +97,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
     updateCalendar(currentYear, currentMonth);
 
-    // Lábléc évszám frissítése
     document.getElementById('year').textContent = new Date().getFullYear();
 });
